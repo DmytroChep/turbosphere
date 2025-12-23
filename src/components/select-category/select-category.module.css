@@ -1,0 +1,16 @@
+.selectCategory {
+	display: flex;
+	flex-direction: column;
+
+	gap: 10px;
+
+	font-size: 20px;
+}
+.labelSelectCategory {
+	display: flex;
+	gap: 5px;
+}
+
+.error {
+	color: red;
+}

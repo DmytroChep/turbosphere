@@ -1,15 +1,8 @@
 import { useState } from "react";
 import styles from "./product.module.css";
+import { ProductProps } from "./product.types";
+import { Link } from "react-router-dom";
 
-interface IProduct {
-	name: string;
-	price: number;
-	image: string;
-}
-
-interface ProductProps {
-	product: IProduct;
-}
 
 export function Product(props: ProductProps) {
 	const { product } = props;
@@ -36,7 +29,9 @@ export function Product(props: ProductProps) {
 					+
 				</button>
 			</div>
-			<button className={styles.buttonMore}>More</button>
+			<button className={styles.buttonMore}>
+				<Link to={`/product/${product.id}`}>More</Link>
+			</button>
 		</div>
 	);
 }

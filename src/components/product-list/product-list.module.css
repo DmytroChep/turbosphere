@@ -1,0 +1,24 @@
+
+
+
+.productsBlock {
+	flex: 1;
+	display: flex;
+	gap: 10px;
+	flex-direction: column;
+	padding: 10px 5px;
+}
+
+
+.productTitle {
+	font-size: 32px;
+}
+
+
+.products {
+	display: flex;
+	gap: 50px;
+	flex: 1;
+	padding: 10px;
+	flex-wrap: wrap;
+}

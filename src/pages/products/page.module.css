@@ -1,0 +1,43 @@
+
+.container {
+	display: flex;
+	flex: 1;
+	gap: 10px;
+}
+
+.filterBlock {
+	padding: 20px;
+	border-right: 1px solid black;
+	display: flex;
+	flex-direction: column;
+
+	gap: 30px;
+}
+
+.searchBlock {
+	position: relative;
+}
+
+.search {
+	width: 400px;
+	height: 40px;
+
+	padding: 0 40px 0 10px;
+	background-color: #ebe7e7;
+
+	border-radius: 16px;
+	border: none;
+
+	font-size: 20px;
+}
+
+.searchIcon {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+
+	right: 10px;
+	top: 50%;
+
+	transform: translateY(-50%);
+}
