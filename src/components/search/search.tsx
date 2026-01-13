@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ICONS } from "../../shared";
 import styles from "./search.module.css";
 import { useProducts } from "../../hooks";
@@ -15,36 +15,41 @@ export function Search() {
 		setIsModalOpen(!isModalOpen);
 	}
 
-
+	const modalContainerRef = useRef<HTMLDivElement>(null);
 	return (
-		<div className={styles.searchBlock}>
+		<div className={styles.searchBlock} ref={modalContainerRef}>
 			<input
 				onFocus={handleInputFocus}
 				placeholder="Find products..."
 				className={styles.searchBar}
 				type="text"
-				onClick={(event)=>{
+				onClick={(event) => {
 					event.stopPropagation()
 				}}
 			/>
 			<ICONS.SearchIcon className={styles.searchIcon} />
-			<Modal 
-			className={styles.modal} 
-			isOpen={isModalOpen} 
-			onClose={closeModal} 
-			doCloseOnOutsideClick={true}>{
-				products.map((product) => {
-					return (
-						<div key={product.id}>
-							<img
-								src={product.image}
-								alt="Product"
-								className={styles.productImage}
-							/>
-							<p className={styles.productName}>{product.name}</p>
-						</div>
-					)
-				})}
+			<Modal
+				className={styles.modal}
+				isOpen={isModalOpen}
+				onClose={closeModal}
+				doCloseOnOutsideClick={true}
+				container={
+					modalContainerRef.current ? modalContainerRef.current : undefined
+				}>
+					{
+					products.map((product) => {
+						return (
+							<div key={product.id}>
+								<img
+									src={product.image}
+									alt="Product"
+									className={styles.productImage}
+								/>
+								<p className={styles.productName}>{product.name}</p>
+							</div>
+						)
+					})}
+
 			</Modal>
 		</div>
 	);

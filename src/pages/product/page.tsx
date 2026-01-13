@@ -1,12 +1,15 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useProductById } from "../../hooks/use-product-by-id";
 import styles from "./page.module.css";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { CartContext } from "../../context/cart-context";
 
 export function OneProductPage() {
 	const {id} = useParams()
 	const {product, error} = useProductById(Number(id))
 	const navigate = useNavigate()
+	const context = useContext(CartContext)
+	
 	useEffect(() => {
 		if (Number.isNaN(Number(id))) {
 			navigate("/")

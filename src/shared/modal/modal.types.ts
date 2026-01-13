@@ -5,6 +5,7 @@ export interface IModalProps{
     className: string
     isOpen: boolean
     onClose: () => void
-    doCloseOnOutsideClick: boolean
+    doCloseOnOutsideClick: boolean,
+    container?: HTMLElement
     // elem:HTMLElement
 }   
