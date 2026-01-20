@@ -19,7 +19,7 @@ export function ProductList({ search, selectedCategory }: ProductListProps) {
 			setFilteredProducts(searchProducts);
 		} else {
 			const newProducts = products.filter((product) => {
-				return product.categoryId === selectedCategory;
+				return product.category.id === selectedCategory;
 			});
 			const searchProducts = newProducts.filter((product) => {
 				return product.name

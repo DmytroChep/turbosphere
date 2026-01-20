@@ -3,6 +3,7 @@ import { useProductById } from "../../hooks/use-product-by-id";
 import styles from "./page.module.css";
 import { useContext, useEffect } from "react";
 import { CartContext } from "../../context/cart-context";
+import { Button } from "../../shared";
 
 export function OneProductPage() {
 	const {id} = useParams()
@@ -55,8 +56,8 @@ export function OneProductPage() {
 				</p>
 
 				<div className={styles.productButtons}>
-					<button className={styles.productButton} onClick={addToCartFunc} >Add to cart</button>
-					<button className={styles.productButton}>Buy</button>
+					<Button variant="buy" onClick={addToCartFunc}>Add to card</Button>
+					<Button variant="buy">Buy</Button>
 				</div>
 			</div>
 		</div>

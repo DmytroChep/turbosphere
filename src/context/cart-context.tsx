@@ -60,6 +60,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
             return item;
         });
         setItems(newItems);
+        console.log(newItems)
     }
     function decrementCount(id: number) {
         const item = items.find(item => item.id === id)

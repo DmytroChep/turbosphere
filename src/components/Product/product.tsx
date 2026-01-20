@@ -3,10 +3,11 @@ import styles from "./product.module.css";
 // import { ProductProps } from "./product.types";
 import { CartContext } from "../../context/cart-context"
 import { Link } from "react-router-dom";
-import type { ProductProps } from "./product.types";
+import type { IProductProps } from "./product.types";
+import { Button } from "../../shared";
 
 
-export function Product(props: ProductProps) {
+export function Product(props: IProductProps) {
 	const { product } = props;
 
 	const cartContext = useContext(CartContext);
@@ -16,7 +17,7 @@ export function Product(props: ProductProps) {
     }
 	console.log(cartContext.items)
 
-	const {incrementCount, decrementCount} = cartContext
+	const {incrementCount, decrementCount, addToCart} = cartContext
 	
 	function incrementCountFunc(){
 		incrementCount(product.id)
@@ -32,13 +33,12 @@ export function Product(props: ProductProps) {
 			<p className={styles.title}>{product.name}</p>
 			<p className={styles.price}>${product.price}</p>
 			<div className={styles.counter}>
-				{/* <p>Count: {count}</p> */}
-				<button onClick={decrementCountFunc} className={styles.buttonIcon}>
+				<Button variant="count" onClick={decrementCountFunc} className={styles.buttonIcon}>
 					-
-				</button>
-				<button onClick={incrementCountFunc} className={styles.buttonIcon}>
+				</Button>
+				<Button  variant="count" onClick={incrementCountFunc} className={styles.buttonIcon}>
 					+
-				</button>
+				</Button>
 			</div>
 			<button className={styles.buttonMore}>
 				<Link to={`/product/${product.id}`}>More</Link>

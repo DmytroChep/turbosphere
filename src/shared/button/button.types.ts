@@ -1,4 +1,4 @@
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
 export interface ButtonProps extends DetailedHTMLProps<HTMLAttributes<HTMLButtonElement>, HTMLButtonElement> {
-    variant: "buy" | "cart";
+    variant: "buy" | "cart" | "delete" | "count-red" | "count-green" | "count";
 }

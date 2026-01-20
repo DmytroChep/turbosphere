@@ -1,8 +1,8 @@
+import { useNavigate } from "react-router-dom";
 import { CartContext, type CartItem } from "../../context/cart-context";
-import { Button } from "../../shared";
+import { Button, IMAGES, IProduct } from "../../shared";
 import styles from './product-in-cart.module.css'
 import { useContext } from "react";
-
 interface IProductInCart {
 	productInCart: CartItem;
 }
@@ -10,6 +10,7 @@ interface IProductInCart {
 export function ProductInCart(props: IProductInCart) {
 	const { productInCart } = props;
     const context = useContext(CartContext)
+	const navigate = useNavigate()
     if (!context){
         return null
     }
@@ -31,49 +32,46 @@ export function ProductInCart(props: IProductInCart) {
     
 	return (
 		<div className = {styles.productInCart}>
-            <img src={productInCart.image} className={styles.image} alt=""/>
+            <img src={IMAGES.cat} className={styles.image} alt=""/>
 
 			<div className={styles.productDetails}>
-				<p className={styles.productName}>
-					<span>Name: </span>
+				<p className={`${styles.productName} ${styles.productInfo}`}>
+					<strong>Name: </strong>
 					{productInCart.name}
 				</p> 
 
-				<p className={styles.productDescription}>
-					<span>Description: </span>
+				<p className={`${styles.productDescription} ${styles.productInfo}`}>
+					<strong>Description: </strong>
 					{productInCart.description}
 				</p>
 
-				<p className={styles.productCategory}>
-					<span>Category: </span>
-					{/* {productInCart.category} */}
+				<p className={`${styles.productCategory} ${styles.productInfo}`}>
+					<strong>Category: </strong>
+					{productInCart.category.name}
 				</p>
 
-				<p className={styles.productPrice}> 
-					<span>Price: </span>
+				<p className={`${styles.productPrice} ${styles.productInfo}`}> 
+					<strong>Price: </strong>
 					{productInCart.price}
 				</p>
 
-				<div className={styles.productCount}>
+				<div className={`${styles.productCount} ${styles.productInfo}`}>
 					<p>
-						<span>Number of items: </span>
+						<strong>Number of items: </strong>
 						{productInCart.count}
 					</p>
 				</div>
 
 				<div className={styles.productActions}>
-                    <Button variant='buy' onClick={incrementCountFunc}>+</Button>
-                    <Button variant='buy' onClick={decrementCountFunc}>-</Button>
+                    <Button variant='count-red' onClick={incrementCountFunc}>+</Button>
+                    <Button variant='count-green' onClick={decrementCountFunc}>–</Button>
 
 				</div>
 			</div>
 			<div className={styles.productSecondActions}>
-			
-
                 <Button variant="buy">Buy</Button>
-                <Button variant="buy">Go to</Button>
-                <Button variant="buy" onClick={removeFromCartFunc}>Delete</Button>
-
+                <Button variant="buy" onClick={()=>{navigate(`/product/${productInCart.id}`)}}>Go to</Button>
+                <Button variant="delete" onClick={removeFromCartFunc}>Delete</Button>
 			</div>
 		</div>
 	);

@@ -39,19 +39,6 @@
 	font-size: 18px;
 }
 
-.buttonIcon {
-	width: 24px;
-	height: 24px;
-	border: 2px solid black;
-
-	background: none;
-
-	font-size: 20px;
-
-	border-radius: 5px;
-	cursor: pointer;
-}
-
 .buttonMore {
 	position: absolute;
 	top: 100%;

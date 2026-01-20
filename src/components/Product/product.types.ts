@@ -1,6 +1,6 @@
 import type { IProduct } from "../../shared";
 
 
-export interface ProductProps {
+export interface IProductProps {
 	product: IProduct;
 }

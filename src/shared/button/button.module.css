@@ -32,3 +32,35 @@
 	background-color: #fff;
 	border: 1px solid #ffd9b3;
 }
+.button-delete{
+	color: red;
+}
+.button-delete:active {
+	background-color: #fff;
+	border: 1px solid #ffd9b3;
+}
+.button-delete:hover {
+	background-color: #ffd9b3;
+}
+.button-count-red, .button-count-green {
+	width: 40px;
+	height: 40px;
+	border-radius: 1234px;
+	color: rgba(64, 64, 64, 1);
+}
+.button-count-green{
+	background-color: rgba(150, 250, 153, 1);
+}
+.button-count-red{
+	background-color: rgba(248, 134, 134, 1);
+}
+
+.button-count{
+	width: 24px;
+	height: 24px;
+	border: 2px solid black;
+	background: none;
+	font-size: 20px;
+	border-radius: 5px;
+	cursor: pointer;
+}

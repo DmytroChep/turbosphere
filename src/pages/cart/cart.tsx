@@ -16,7 +16,7 @@ export function CartPage() {
     
     return (
         <div className= {styles.cartContainer}>
-            <h1>Cart</h1>
+            <h1 className = {styles.cartTitle}>Cart</h1>
 
             <div className={styles.cartProductList}>
                 <div className = {styles.listOfProducts}>
@@ -26,15 +26,10 @@ export function CartPage() {
                         })
                     }
                 </div>
-
-                {/* <div className={styles.cartButtons}>
-                    <Button variant="buy"/>
-                    <Button variant="cart" onClick={removeAll}/>
-                </div> */}
             </div>
 
             <div className={styles.cartFooter}>
-                <h2>Total price: {getTotalPrice()}</h2>
+                <h2 className = {styles.cartTotalPrice}>Total price: {getTotalPrice()}</h2>
 
                 <Button variant="buy">Buy All</Button>
                 <Button variant="cart" onClick={removeAll}>Delete All</Button>
