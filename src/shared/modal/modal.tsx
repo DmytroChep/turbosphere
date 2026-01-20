@@ -8,7 +8,7 @@ export function Modal(props: IModalProps) {
 
     const modalRef = useRef<HTMLDivElement>(null)
 
-
+    
     useEffect(() => {
 
         if (!doCloseOnOutsideClick) return

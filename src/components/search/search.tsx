@@ -9,7 +9,7 @@ export function Search() {
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const closeModal = () => setIsModalOpen(false)
 	const { products } = useProducts();
-
+	const [filteredProducts, setFilteredProducts] = useState(products);
 
 	function handleInputFocus() {
 		setIsModalOpen(!isModalOpen);
@@ -26,6 +26,13 @@ export function Search() {
 				onClick={(event) => {
 					event.stopPropagation()
 				}}
+				onChange={(event)=>{
+					const text = event.target.value
+					const productsInFilter = products.filter((product) =>{
+						return product.name.startsWith(text)
+					})
+					setFilteredProducts(productsInFilter)
+				}}
 			/>
 			<ICONS.SearchIcon className={styles.searchIcon} />
 			<Modal
@@ -33,13 +40,15 @@ export function Search() {
 				isOpen={isModalOpen}
 				onClose={closeModal}
 				doCloseOnOutsideClick={true}
+				
 				container={
 					modalContainerRef.current ? modalContainerRef.current : undefined
 				}>
 					{
-					products.map((product) => {
+					filteredProducts.map((product) => {
 						return (
-							<div key={product.id}>
+							<div key={product.id} className={styles.productItem}>
+								<ICONS.SearchIcon className={styles.productSearch} /> 
 								<img
 									src={product.image}
 									alt="Product"

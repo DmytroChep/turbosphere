@@ -7,5 +7,4 @@ export interface IModalProps{
     onClose: () => void
     doCloseOnOutsideClick: boolean,
     container?: HTMLElement
-    // elem:HTMLElement
 }   

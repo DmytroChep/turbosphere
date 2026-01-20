@@ -34,5 +34,29 @@
 	gap: 10px;
 	background-color: #ebe7e7;
 	padding: 10px;
-	
+	border-top: rgba(0, 0, 0, 1) solid 1px;
+}
+.productItem{
+	display: flex;
+	width: 100%;
+	height: 55px;
+	border-radius: 16px;
+	padding-top: 10px;
+	padding-right: 5px;
+	padding-bottom: 10px;
+	padding-left: 5px ;
+	gap: 10px;
+	background-color: white;
+}
+.productImage{
+	width: 50px;
+	height: 40px;
+}
+.productSearch{
+	width: 25px;
+	height: 25px;
+}
+.productName{
+	font-size: 24px;
+	font-weight: 400;
 }

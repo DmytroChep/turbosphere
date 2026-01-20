@@ -16,6 +16,24 @@ export function OneProductPage() {
 		}
 	}, [id, navigate])
 
+	if (!product) {
+		return null
+	}
+
+	const productInCart = {
+		...product,
+		count: 0
+	}
+	
+	function addToCartFunc() {
+		if (!productInCart) {
+			return null
+		}
+		context?.addToCart(productInCart)
+	}
+
+
+
 	if (error || !product){
 		return (
 			<h1>{error}</h1>
@@ -37,7 +55,7 @@ export function OneProductPage() {
 				</p>
 
 				<div className={styles.productButtons}>
-					<button className={styles.productButton}>Add to cart</button>
+					<button className={styles.productButton} onClick={addToCartFunc} >Add to cart</button>
 					<button className={styles.productButton}>Buy</button>
 				</div>
 			</div>
