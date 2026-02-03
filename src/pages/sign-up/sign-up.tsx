@@ -3,9 +3,11 @@ import type { ISignUpForm } from "./sign-up.types"
 import styles from "./sign-up.module.css"
 import { ICONS } from "../../shared"
 import { Link } from "react-router-dom"
+import { useUserContext } from "../../context/user-context"
 
 export function SignUp() {
     const {handleSubmit, register, formState: {errors}} = useForm<ISignUpForm>()
+    const {registration} = useUserContext()
 
     const emailError = errors.email?.message
     const passwordError = errors.password?.message
@@ -14,10 +16,14 @@ export function SignUp() {
 
     const rootError = errors.root?.message
 
+    function onSubmit(data:ISignUpForm){
+        registration(data)
+    }
+
     return (
         <div className={styles.formAndImage}>
             
-            <form  noValidate className={styles.signUpForm}>
+            <form  noValidate className={styles.signUpForm} onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="email" className={styles.inputLabel}>
                     Email:
                     <input type="email"  className={styles.inputForm} {...register('email', {
@@ -51,7 +57,7 @@ export function SignUp() {
                             message: "Username length must be more than 5 symbols"
                         },
                         validate: (value) => {
-                            if (value.includes("!") || !value.includes(".")){
+                            if (value.includes("!") || value.includes(".")){
                                 return "Username can't contain ! or ."
                             }
                         }
@@ -95,7 +101,7 @@ export function SignUp() {
                             message: "Password length must be more than 5 symbols"
                         },
                         validate: (value) => {
-                            if (!value.includes("https://") || !value.includes("http://") || !value.includes("://")){
+                            if (!value.includes("https://") && !value.includes("http://") && !value.includes("://")){
                                 return "Avatar must be a valid url"
                             } else if (typeof value !== 'string') {
                                 return "Url must be string"

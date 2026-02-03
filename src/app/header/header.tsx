@@ -3,9 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { ICONS } from "../../shared/icons";
 import { IMAGES } from "../../shared/images";
 import { Search } from "../../components/search";
+import { useUserContext } from "../../context/user-context";
 
 export function Header() {
 	const navigate = useNavigate();
+
+	const {user} = useUserContext()
+
 	return (
 		<header className={styles.header}>
 			<img
@@ -34,6 +38,8 @@ export function Header() {
 				</Link>
 			</div>
 
+			<p>Username: {user?.username}</p>
+				
 			<img
 				className={styles.userProfileAvatar}
 				src={IMAGES.user}

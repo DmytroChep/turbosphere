@@ -2,15 +2,23 @@ import { useForm } from "react-hook-form"
 import type { ISignInForm } from "./sign-in.types"
 import styles from "./sign-in.module.css"
 import { ICONS } from "../../shared";
-export function SignIn(){
-    const {handleSubmit, register, formState: {errors}} = useForm<ISignInForm>()
+import { useUserContext } from "../../context/user-context";
 
-    function onSubmit(data:ISignInForm){
-        console.log(JSON.stringify(data))
-        
+export function SignIn(){
+    const {handleSubmit, register, formState: {errors}, setError} = useForm<ISignInForm>()
+    const { login } = useUserContext()
+
+
+    async function onSubmit(data:ISignInForm){
+        const result = await login(data)
+        if (result) {
+            setError("root", {message: result})
+        }
     }
     const emailError = errors.email?.message 
     const rootError = errors.root?.message
+
+    
     
     return(<div className={styles.signInDiv}> <form onSubmit={handleSubmit(onSubmit)} noValidate className={styles.signInForm}>
             <label className={styles.signInLabel}>
