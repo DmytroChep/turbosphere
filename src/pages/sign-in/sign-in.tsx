@@ -3,10 +3,13 @@ import type { ISignInForm } from "./sign-in.types"
 import styles from "./sign-in.module.css"
 import { ICONS } from "../../shared";
 import { useUserContext } from "../../context/user-context";
+import { useNavigate } from "react-router-dom";
 
 export function SignIn(){
     const {handleSubmit, register, formState: {errors}, setError} = useForm<ISignInForm>()
     const { login } = useUserContext()
+
+    const navigate = useNavigate() 
 
 
     async function onSubmit(data:ISignInForm){
@@ -50,12 +53,12 @@ export function SignIn(){
                         message: "This field is required"
                     },
                     minLength:{
-                        value:8,
+                        value:5,
                         message:"Password length must be at least 8 symbols"
                     }
             })}/>
             </label>
-            <p className={styles.sigInRegistration}>Don`t have an acount? Register now</p>
+            <p className={styles.sigInRegistration}>Don`t have an acount? <a href="/sign-up" className= {styles.signUpLink}>Register now</a></p>
             <button className={styles.signInSentButton} type="submit">Submit</button>
             
             {rootError && <p className={styles.error}>{rootError}</p>}

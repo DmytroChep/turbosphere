@@ -1,10 +1,9 @@
 import { useContext } from "react";
 import styles from "./product.module.css";
-// import { ProductProps } from "./product.types";
 import { CartContext } from "../../context/cart-context"
 import { Link } from "react-router-dom";
-import type { IProductProps } from "./product.types";
 import { Button } from "../../shared";
+import { IProductProps } from "./product.types";
 
 
 export function Product(props: IProductProps) {
